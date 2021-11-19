@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="py-5">
+      <div class="container text-center">
+        <p class="h6 mb-0 text-uppercase text-primary">Lifestyle</p>
+        <h1>{{ post.title }}</h1>
+      <!--    <p class="mb-3"></p>
+        <ul class="list-inline small text-uppercase mb-0">
+         <li class="list-inline-item align-middle"><img class="rounded-circle shadow-sm" src="{% static 'img/person-1.jpg' %}" alt="" width="40"/></li>
+          <li class="list-inline-item mr-0 text-muted align-middle">By </li>
+          <li class="list-inline-item align-middle mr-0"><a class="font-weight-bold reset-anchor" href="#">Jason Doe</a></li>
+          <li class="list-inline-item text-muted align-middle mr-0">|</li>
+          <li class="list-inline-item text-muted align-middle mr-0">June 15, 2020</li>
+        <li class="list-inline-item text-muted align-middle mr-0">|</li>      -->
+      <!--    <li class="list-inline-item text-muted align-middle">20 Comments</li></ul>  -->
+
+        <img class="w-100 py-5" src="{{ post.thumbnail.url }}" alt="">
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mb-5 mb-lg-0">
+
+
+            {{ post.content | safe }}
+
+
+          </div>
+            <div class="col-lg-4">   <!-- -->
+            <!-- About me widget
+            <div class="mb-5 text-center"><img class="mb-3 rounded-circle img-thumbnail shadow-sm" src="{% static 'img/author.jpg' %}" alt="" width="110">
+              <h3 class="h4">About me</h3>
+              <p class="text-small text-muted px-sm-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p><img class="d-block mx-auto mb-3" src="{% static 'img/signature.png' %}" alt="" width="60">
+              <ul class="list-inline text-small mb-0">
+                <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-linkedin"></i></a></li>
+                <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-youtube"></i></a></li>
+                <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-vimeo-v"></i></a></li>
+              </ul>
+            </div> -->
+            <!-- Categories widget -->
+            <div class="mb-5 text-center"><a class="category reset-anchor bg-cover bg-center mb-2" href="#" style="background: url({% static 'img/category-1.jpg' %})">
+                <p class="category-title text-uppercase small">Lifestyle</p></a><a class="category reset-anchor bg-cover bg-center mb-2" href="#" style="background: url({% static 'img/category-2.jpg' %})">
+                <p class="category-title text-uppercase small">Travel</p></a><a class="category reset-anchor bg-cover bg-center" href="#" style="background: url({% static 'img/category-3.jpg' %})">
+                <p class="category-title text-uppercase small">Vacation</p></a></div>
+            <!-- Newsletter widget -->
+            <div class="px-4 py-5 bg-light mb-5 text-center">
+              <h3 class="h5"><i class="far fa-envelope mr-2"></i>Join the family</h3>
+              <p class="text-small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+              <form action="." method="post">
+                  {% csrf_token %}
+                <div class="form-group mb-1">
+                  <input class="form-control form-control-sm" type="email" name="email" placeholder="Emaill address">
+                </div>
+                <div class="form-group mb-0">
+                  <button class="btn btn-dark btn-block btn-sm" type="submit">Subscribe</button>
+                </div>
+              </form>
+            </div>
+            <!-- Latest posts widget -->
+              <div class="mb-5" style=" text-align: right !important;">
+              <h3 class="h5">Latest posts</h3>
+
+          {% for post in most_recent %}
+              <p class="text-small text-muted mb-4"></p>
+              <ul class="list-unstyled">
+                <li class="media mb-1"><a href="post.html"><img src="{{ post.thumbnail.url }}" alt="" height="80" width="140"></a>   <!-- give all images width  -->
+                  <div class="media-body ml-3">
+                    <p class="small text-primary text-uppercase mb-0">{{ post.timestamp }}</p>
+                    <h6 class="mb-1"><a class="reset-anchor" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h6>
+                    <p class="small text-muted">{{ post.overview }}</p>
+                  </div>
+                </li>
+              </ul>
+              {% endfor %}
+
+
+
+
+            </div>
+            <!-- Instagram widget -->
+            <div class="mb-5" style=" text-align: right !important;">
+              <h3 class="h5">Follow on Instagram</h3>
+              <p class="text-small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+              <div class="row px-3">
+                <div class="col-3 px-0"><a class="instagram-item overlay-hover-dark-sm d-block w-100" href="#">
+                    <div class="overlay-content"><img class="img-fluid" src="{% static 'img/instagram-1.jpg' %}" alt=""></div></a></div>
+                <div class="col-3 px-0"><a class="instagram-item overlay-hover-dark-sm d-block w-100" href="#">
+                    <div class="overlay-content"><img class="img-fluid" src="{% static 'img/instagram-2.jpg' %}" alt=""></div></a></div>
+                <div class="col-3 px-0"><a class="instagram-item overlay-hover-dark-sm d-block w-100" href="#">
+                    <div class="overlay-content"><img class="img-fluid" src="{% static 'img/instagram-3.jpg' %}" alt=""></div></a></div>
+                <div class="col-3 px-0"><a class="instagram-item overlay-hover-dark-sm d-block w-100" href="#">
+                    <div class="overlay-content"><img class="img-fluid" src="{% static 'img/instagram-4.jpg' %}" alt=""></div></a></div>
+                <div class="col-3 px-0"><a class="instagram-item overlay-hover-dark-sm d-block w-100" href="#">
+                    <div class="overlay-content"><img class="img-fluid" src="{% static 'img/instagram-5.jpg' %}" alt=""></div></a></div>
+                <div class="col-3 px-0"><a class="instagram-item overlay-hover-dark-sm d-block w-100" href="#">
+                    <div class="overlay-content"><img class="img-fluid" src="{% static 'img/instagram-6.jpg' %}" alt=""></div></a></div>
+                <div class="col-3 px-0"><a class="instagram-item overlay-hover-dark-sm d-block w-100" href="#">
+                    <div class="overlay-content"><img class="img-fluid" src="{% static 'img/instagram-8.jpg' %}" alt=""></div></a></div>
+                <div class="col-3 px-0"><a class="instagram-item overlay-hover-dark-sm d-block w-100" href="#">
+                    <div class="overlay-content"><img class="img-fluid" src="{% static 'img/instagram-1.jpg' %}" alt=""></div></a></div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section>
+<!--
+<div style="
+  background: #3EC1D5 none repeat scroll 0 0 !important;
+  padding: 30px 0 !important;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs=12">
+        <div class="suscribe-text text-center" style="
+                   padding: 10px 0 !important;">
+          <h3>Welcom   display: block !important;
+                  e to our ikameti company</h3>
+          <a class="sus-btn" style="
+  background: #fff none repeat scroll 0 0 !important;
+  border: 2px solid #fff !important;
+  color: #3EC1D5 !important;
+  display: inline-block !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin-left: 100px !important;
+  padding: 10px 20px !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  border-radius: 30px !important;
+"  href="Contact.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+{% endblock content %}
